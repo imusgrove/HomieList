@@ -1,0 +1,33 @@
+{#loads the path to static files#}
+{% load  staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'contacts/style.css' %}" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+{# Logo#}
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'Contacts:index' %}">Homies</a>
+        </div>
+
+    </div>
+</nav>
+{% if all_contacts %}
+    <h3>Here's all da homies</h3>
+    <ul>
+    {% for contact in all_contacts %}
+    <li><a href="{% url 'Contacts:detail' contact.id %}">{{ contact.first_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <h3>You don't have any homies yet</h3>
+{% endif %}
