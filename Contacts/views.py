@@ -1,12 +1,31 @@
-from django.shortcuts import render, get_object_or_404
+from django.views import generic
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.core.urlresolvers import reverse_lazy
 from .models import Contact
 
-def index(request):
-    all_contacts = Contact.objects.all()
-    return render(request, 'Contacts/index.html', {'all_contacts': all_contacts})
+class IndexView(generic.ListView):
+    template_name = 'Contacts/index.html'
+    context_object_name = 'all_contacts'
+    def get_queryset(self):
+        return Contact.objects.all()
 
-def detail(request, contact_id):
-    contact = get_object_or_404(Contact, pk=contact_id)
-    return render(request, 'Contacts/detail.html', {'contact': contact})
+class DetailView(generic.DetailView):
+    model = Contact
+    template_name = 'Contacts/detail.html'
+
+class ContactCreate(CreateView):
+    model = Contact
+    fields = ['first_name', 'last_name', 'email', 'phone_number', 'street_address', 'headshot']
+
+class ContactUpdate(UpdateView):
+    model = Contact
+    fields = ['first_name', 'last_name', 'email', 'phone_number', 'street_address', 'headshot']
+
+class ContactDelete(DeleteView):
+    model = Contact
+    success_url = reverse_lazy('Contacts:index')
+
+
+
 
 

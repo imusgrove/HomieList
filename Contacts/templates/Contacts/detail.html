@@ -1,3 +1,7 @@
+{% extends 'Contacts/base.html' %}
+    <title>{% block title %}Homie Details{% endblock %}</title>
+
+{% block body %}
 <h1>Info for this homie:</h1>
 <img src="{{ contact.headshot }}" height="150" width="130">
 <h3>{{ contact}}</h3>
@@ -7,6 +11,8 @@
         <p>{{ contact.street_address }}</p>
         <p>{{ contact.phone_number }}</p>
 </p>
+
+{% endblock %}
 
 
 

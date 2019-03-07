@@ -1,3 +1,7 @@
 body{
 background: black url("images/eb74c9760468c43fa28daddb54e80bde.jpg");
 }
+
+.navbar-brand{
+    font-family: 'Satisfy', cursive;
+}
