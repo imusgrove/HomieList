@@ -4,9 +4,19 @@
 {% block body %}
     {% if all_contacts %}
         <h3>Here's all da homies</h3>
-        <ul>
+
         {% for contact in all_contacts %}
-        <li><a href="{% url 'Contacts:detail' contact.id %}">{{ contact.first_name }}</a></li>
+        <div class="col-sm-4 col-lg-2">
+            <div class="thumbnail">
+
+        {# Contact Pic #}
+         <a href="{% url 'Contacts:detail' contact.id %}">
+         <img src="{{ contact.headshot.url }}" class="img-responsive">
+         </a>
+        <div class="caption">
+            <h2>{{contact.first_name }}</h2>
+            <h4>{{contact.phone_number  }}</h4>
+
         {# Details #}
          <a href="{% url 'Contacts:detail' contact.id %}" class="btn btn-primary btn-sm">View Details </a>
         {# Delete #}
@@ -17,8 +27,10 @@
                 <span class="far fa-trash-alt"></span>
             </button>
          </form>
+       </div>
+    </div>
+   </div>
         {% endfor %}
-        </ul>
     {% else %}
         <h3>You don't have any homies yet</h3>
     {% endif %}

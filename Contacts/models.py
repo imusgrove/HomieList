@@ -7,7 +7,7 @@ class Contact(models.Model):
     email = models.EmailField()
     phone_number = models.IntegerField()
     street_address = models.CharField(max_length=250)
-    headshot = models.CharField(max_length=1000)
+    headshot = models.FileField()
 
     def get_absolute_url(self):
         return reverse('Contacts:detail', kwargs={'pk': self.pk})

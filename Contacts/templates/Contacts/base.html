@@ -35,7 +35,7 @@
                 </li>
             </ul>
 
-            <form class="navbar-form navbar-left" role="search" method="get" action="#">
+            <form class="navbar-form navbar-left" role="search" method="get" action="{% url 'Contacts:search'%}">
                 <div class="form-group">
                     <input type="text" class="form-control" name="q" value="">
                 </div>
@@ -50,7 +50,7 @@
                 </li>
 
                 <li class="">
-                    <a href="#">
+                    <a href="{% url 'Contacts:logout' %}">
                         <i class="fas fa-power-off" aria-hidden="true"></i>&nbsp; Logout
                     </a>
                 </li>

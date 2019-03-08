@@ -1,0 +1,17 @@
+{% extends 'Contacts/base.html' %}
+{% block title %}
+<h1>Search People</h1>
+{% endblock %}
+
+{% block body %}
+ <form action="{% url 'search:searchcontacts' %}" method="get" value="{{ request.GET.q }}">
+
+
+
+ </form>
+
+
+
+
+
+{% endblock %}
